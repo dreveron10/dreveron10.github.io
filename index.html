@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diego Reverón</title>
+<meta name="description" content="Diego Reverón, mechanical engineering student at UPR Mayagüez. Rocket recovery systems, avionics, and things I build.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#FAFAF9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0E0F" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Diego Reverón">
+<meta property="og:description" content="Mechanical engineering student at UPR Mayagüez. Rocket recovery systems, avionics, and things I build.">
+<meta property="og:url" content="https://dreveron10.github.io/">
+<meta property="og:image" content="https://dreveron10.github.io/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://dreveron10.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<style>
+/* Layout: a quiet photo-led scroll. Big images, short first-person text, one column of type set left, no boxes. */
+:root{
+  --bg:#FAFAF9; --fg:#141414; --muted:#6F6F6B; --line:#E3E3DF; --photo:#DADBD6; --photo-2:#CBCDC7; --link:#1C43C9;
+  --sans:"Instrument Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E0E0F; --fg:#ECECEA; --muted:#8F908B; --line:#242426; --photo:#1F2022; --photo-2:#2A2B2E; --link:#8AA2FF; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E0E0F; --fg:#ECECEA; --muted:#8F908B; --line:#242426; --photo:#1F2022; --photo-2:#2A2B2E; --link:#8AA2FF; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--link);outline-offset:4px;border-radius:2px}
+p{margin:0}
+.page{max-width:1280px;margin:0 auto;padding-inline:clamp(20px,4vw,56px)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;justify-content:space-between;align-items:baseline;padding-block:20px;font-size:15px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-inline:calc(-1*clamp(20px,4vw,56px));padding-inline:clamp(20px,4vw,56px)}
+.nav .name{font-weight:600}
+.nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0}
+.nav a:hover{color:var(--link)}
+
+/* intro */
+.intro{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,80px);align-items:end;padding-block:clamp(48px,8vw,112px) clamp(48px,7vw,96px)}
+.intro h1{font-size:clamp(32px,4.4vw,58px);font-weight:500;line-height:1.1;letter-spacing:-.03em;margin:0;max-width:20ch;text-wrap:balance}
+.intro .sub{margin-top:clamp(24px,3vw,40px);display:grid;gap:28px;max-width:52ch}
+.intro .sub p{font-size:18px}
+.intro .sub .meta{font-size:15px;color:var(--muted);display:grid;gap:4px}
+.intro .portrait{display:grid;gap:10px}
+
+/* photo blocks */
+.photo{background:linear-gradient(135deg,var(--photo),var(--photo-2));width:100%;max-width:100%;display:block;overflow:hidden;position:relative}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.photo.fit{background:transparent}
+.photo.fit img{object-fit:contain;padding:2%}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .photo.fit{background:transparent}}
+.p-gallery+.p-gallery{margin-top:20px}
+.viewer{margin-top:clamp(28px,4vw,56px)}
+model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-action:pan-y;background:transparent;--poster-color:transparent;--progress-bar-color:var(--muted);--progress-bar-height:1px}
+.viewer .cap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sub-h{font-size:15px;color:var(--muted);margin:clamp(40px,5vw,64px) 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.p-gallery.three{grid-template-columns:1fr 1fr 1fr}
+@media (max-width:760px){.p-gallery.three{grid-template-columns:1fr}}
+.photo.hero{aspect-ratio:21/9}
+.photo.hero.fit img{padding:4% 6%}
+.photo.wide{aspect-ratio:16/10}
+.photo.r169{aspect-ratio:16/9}
+.photo.tall{aspect-ratio:4/5}
+.photo.square{aspect-ratio:1}
+.cap{font-size:14px;color:var(--muted);margin-top:10px}
+
+/* projects */
+.projects{padding-top:clamp(40px,6vw,96px)}
+.label{font-size:15px;color:var(--muted);margin:0 0 clamp(20px,3vw,36px);padding-bottom:12px;border-bottom:1px solid var(--line)}
+.project{padding-block:clamp(48px,7vw,120px);border-top:1px solid var(--line)}
+.project:first-of-type{border-top:0;padding-top:0}
+.p-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:clamp(24px,3vw,40px)}
+.p-head h2{font-size:clamp(28px,3.4vw,42px);font-weight:500;letter-spacing:-.03em;line-height:1.1;margin:0}
+.p-head .when{font-size:15px;color:var(--muted);margin-top:8px}
+.p-head .one{font-size:19px;max-width:40ch;justify-self:end}
+.p-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:clamp(28px,4vw,56px)}
+.p-text{max-width:56ch;display:grid;gap:18px}
+.p-text p{font-size:17px}
+.facts{align-self:start;display:grid;gap:12px;font-size:15px;max-width:38ch;justify-self:end;width:100%}
+.facts div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding-top:12px;border-top:1px solid var(--line)}
+.facts div:first-child{border-top:0;padding-top:0}
+.facts span{color:var(--muted)}
+.p-gallery{display:grid;grid-template-columns:3fr 2fr;gap:20px;margin-top:clamp(28px,4vw,56px);align-items:start}
+.p-gallery.flip{grid-template-columns:2fr 3fr}
+
+/* skills as prose */
+.tools{padding-block:clamp(56px,8vw,120px);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tools h2{font-size:clamp(24px,3vw,36px);font-weight:500;letter-spacing:-.03em;margin:0;line-height:1.1}
+.tools dl{margin:0;display:grid;gap:22px;max-width:52ch}
+.tools dt{font-size:15px;color:var(--muted);margin-bottom:4px}
+.tools dd{margin:0;font-size:17px}
+
+/* contact */
+.contact{padding-block:clamp(56px,8vw,120px) 48px;border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(34px,5.4vw,72px);font-weight:500;letter-spacing:-.03em;line-height:1.05;margin:0;max-width:16ch}
+.contact .links{display:flex;gap:28px;flex-wrap:wrap;margin-top:32px;font-size:18px}
+.contact .links a{border-bottom:1px solid var(--fg);padding-bottom:2px}
+.contact .links a:hover{color:var(--link);border-color:var(--link)}
+.foot{font-size:14px;color:var(--muted);padding-bottom:40px}
+
+/* tablets and small laptops */
+@media (max-width:1000px){
+  .p-body{grid-template-columns:1fr;gap:40px}
+  .p-text{max-width:62ch}
+  .facts{max-width:none;justify-self:start;grid-template-columns:1fr 1fr;column-gap:40px}
+  .facts div:nth-child(2){border-top:0;padding-top:0}
+  .intro{grid-template-columns:3fr 2fr}
+}
+
+/* phones */
+@media (max-width:760px){
+  .nav ul{gap:18px}
+  .nav{position:static;margin-inline:0;padding-inline:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .intro,.p-head,.p-body,.tools{grid-template-columns:1fr;gap:28px}
+  .intro{padding-block:40px 48px}
+  .intro .sub p{font-size:17px}
+  .intro .portrait .photo{aspect-ratio:4/3}
+  .p-head .one{font-size:18px;justify-self:start}
+  .facts{grid-template-columns:1fr;max-width:none;justify-self:start}
+  .facts div:nth-child(2){border-top:1px solid var(--line);padding-top:12px}
+  .facts div{grid-template-columns:104px 1fr;gap:12px}
+  .p-gallery,.p-gallery.flip{grid-template-columns:1fr;gap:28px}
+  .p-gallery.three{grid-template-columns:1fr 1fr;gap:14px}
+  .p-gallery.three .photo.wide{aspect-ratio:1}
+  .p-gallery.three>div:nth-child(3){grid-column:1/-1}
+  .p-gallery.three>div:nth-child(3) .photo.wide{aspect-ratio:16/9}
+  .p-gallery.three .cap{font-size:13px}
+  .photo.tall{aspect-ratio:4/3}
+  .photo.hero{aspect-ratio:16/9}
+  .photo.hero.fit{aspect-ratio:3/1}
+  .photo.hero.fit img{padding:0}
+  .photo.tall.fit{aspect-ratio:3/4}
+  model-viewer{height:clamp(320px,62vh,460px)}
+  .viewer .cap{flex-direction:column;gap:4px}
+  .tools dl{gap:18px}
+  .contact .links{gap:20px}
+}
+
+/* very small phones */
+@media (max-width:380px){
+  .intro h1{font-size:30px}
+  .nav{flex-wrap:wrap;gap:8px}
+  .p-gallery.three{grid-template-columns:1fr}
+  .p-gallery.three .photo.wide{aspect-ratio:16/10}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav" aria-label="Site">
+    <a class="name" href="#top">Diego Reverón</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="mailto:diego.reveron@upr.edu">Email</a></li>
+      <li><a href="https://github.com/dreveron10" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <section class="intro" id="top">
+    <div>
+      <h1>I build the part of the rocket that has to work after everything else is done.</h1>
+      <div class="sub">
+        <p>I'm a mechanical engineering student at the University of Puerto Rico at Mayagüez. I co-lead recovery on Draco, the campus NASA Student Launch team, and on my own time I'm building a rocket for my Level 1 high power certification. Recovery systems, avionics, and the hardware around them.</p>
+        <div class="meta">
+          <span>B.S. Mechanical Engineering, UPR Mayagüez, class of 2029</span>
+          <span>Recovery co-lead, Draco Rocketry Team</span>
+          <span>Tripoli Rocketry Association member</span>
+          <span>Mayagüez, Puerto Rico</span>
+        </div>
+      </div>
+    </div>
+    <div class="portrait">
+      <div class="photo tall" role="img" aria-label="Photo placeholder"></div>
+      <p class="cap">Photo coming.</p>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <p class="label">Selected work</p>
+
+    <article class="project">
+      <div class="p-head">
+        <div>
+          <h2>ZAFIRO I</h2>
+          <p class="when">Level 1 certification rocket · Designed and built 2026, flying late 2026</p>
+        </div>
+        <p class="one">A 2.68 inch rocket I designed from the first sketch, then simulated three different ways to find out where it would break.</p>
+      </div>
+      <div class="photo hero fit"><img src="images/zafiro-side.png" width="1800" height="447" alt="Side render of ZAFIRO I: navy airframe with the ZAFIRO livery and a silver nose cone"></div>
+      <p class="cap">ZAFIRO I in Fusion 360. 2.68 inch Blue Tube, navy with a silver nose.</p>
+      <div class="p-body">
+        <div class="p-text">
+          <p>ZAFIRO I is the rocket I'm flying for my Level 1 high power certification. Blue Tube airframe, 38 mm motor mount, an AeroTech I218R, 1,650 grams on the pad and about 3,100 feet of apogee. Recovery is single deploy: a Featherweight Blue Raven fires the charge at apogee and the motor's own ejection backs it up 14 seconds later. Almost everything that isn't the tube is printed PETG, from the fin can rings to the two-piece nose to the AV bulkhead with its charge well built in. The fins are 6 mm birch.</p>
+          <p>Most of the design decisions were about parts count and about what I could prove. Two printed parts replace the plywood centering rings: an aft ring with glue grooves and a forward cap that doubles as the motor bulkhead and carries the aft eyebolt on a captive nylock. The nose is two halves bonded on a lip, with #8-32 nuts embedded during a print pause so the bay rods thread straight into it. Two nylon shear pins hold the nose at 1.9 times the ejection load, enough to stay closed under drag and let go when the charge fires.</p>
+          <p>I didn't want to trust one number. OpenRocket gives 2.05 calibers on the pad and 122 ft/s off a 6 foot rail. Six Fluent cases put the center of pressure 1.3 to 2.2 inches further aft than Barrowman, so the margin is better than it looks, but they also put drag at Cd 0.75 instead of 0.51, which would bring apogee down to about 2,640 feet. An Explicit Dynamics landing at 4.9 m/s, tail first, showed the leading fin root reaching 129 MPa on concrete, about twice what birch plywood takes, and 79 MPa on sand. The fin is softer than any hard ground, so the fix isn't a stiffer fin. It's landing on grass and laying good quarter inch fillets.</p>
+          <p>What I know I haven't proven yet: the forward cap and nose boss geometry wouldn't mesh, so those are hand calculations for now, 2.5x and 8x. A washer I modeled into the cap pocket turned out to be impossible to install, which I caught on October 30, so the nylock now bears directly on the plate and gets an epoxy bed and a 100 to 150 lbf pull test before the cap is glued. That pull test, a nose drop test and a ground test of the 1.0 gram charge all happen before it flies.</p>
+        </div>
+        <div class="facts">
+          <div><span>Airframe</span><b>2.68 in Blue Tube, 38 mm mount</b></div>
+          <div><span>Motor</span><b>AeroTech I218R-14A</b></div>
+          <div><span>Pad mass</span><b>1,650 g</b></div>
+          <div><span>Apogee</span><b>3,130 ft in OpenRocket, about 2,640 ft with CFD drag</b></div>
+          <div><span>Stability</span><b>2.05 cal on the pad, 1.35 cal off the rail in 15 mph wind</b></div>
+          <div><span>Recovery</span><b>Blue Raven at apogee, motor ejection backup, 15.8 ft/s under a 30 in chute</b></div>
+          <div><span>Structure</span><b>Printed PETG fin can, nose and bulkhead, 6 mm birch fins</b></div>
+          <div><span>Tools</span><b>Fusion 360, OpenRocket, Ansys Fluent, Explicit Dynamics, Static Structural</b></div>
+        </div>
+      </div>
+      <div class="viewer">
+        <model-viewer id="zafiro3d" alt="Interactive 3D model of ZAFIRO I" camera-controls auto-rotate auto-rotate-delay="1500" rotation-per-second="18deg" shadow-intensity="0.6" exposure="1.05" camera-orbit="35deg 78deg 2.4m" min-camera-orbit="auto auto 1.2m" max-camera-orbit="auto auto 4m" interaction-prompt="none" loading="lazy" poster="images/zafiro-side.png"></model-viewer>
+        <p class="cap"><span>The exterior model, exported from Fusion 360. Drag to turn it, scroll to zoom.</span><span>28,800 triangles, 1.5 MB</span></p>
+      </div>
+      <div class="p-gallery flip">
+        <div><div class="photo tall fit"><img src="images/zafiro-recovery-train.png" width="309" height="1125" loading="lazy" decoding="async" alt="Render of the recovery train: parachute in its deployment bag, Nomex protector, swivel and quick links"></div><p class="cap">The recovery train: chute in its bag, Nomex, swivel and quick links.</p></div>
+        <div><div class="photo wide r169"><img src="images/zafiro-impact-concrete.jpg" width="1800" height="1012" loading="lazy" decoding="async" alt="Explicit Dynamics sequence of the fin can landing on concrete, stress rising at the leading fin root"></div><p class="cap">Landing on concrete at 4.9 m/s, tail first. The leading fin root crosses 70 MPa by 4 ms.</p></div>
+      </div>
+      <div class="p-gallery">
+        <div><div class="photo wide r169"><img src="images/zafiro-bulkhead-fea.jpg" width="1800" height="1012" loading="lazy" decoding="async" alt="Static structural von Mises stress on the printed AV bulkhead under a 260 lbf snatch load"></div><p class="cap">AV bulkhead under a 260 lbf snatch load: 17.5 MPa, about 2.9x on PETG.</p></div>
+        <div><div class="photo tall fit"><img src="images/zafiro-sled.png" width="350" height="1135" loading="lazy" decoding="async" alt="Render of the printed avionics sled with the Blue Raven, battery, GPS antenna and bulkhead"></div><p class="cap">The printed AV sled: Blue Raven, battery, GPS and the bulkhead with its charge well.</p></div>
+      </div>
+      <div class="p-gallery">
+        <div><div class="photo wide r169"><img src="images/zafiro-cfd-streamlines.jpg" width="1800" height="1012" loading="lazy" decoding="async" alt="CFD streamlines around ZAFIRO I at 8 degrees angle of attack, colored by velocity"></div><p class="cap">Ansys Fluent, Mach 0.3 at 8 degrees angle of attack. Streamlines colored by velocity.</p></div>
+        <div><div class="photo wide r169"><img src="images/zafiro-cfd-pressure.jpg" width="1800" height="1012" loading="lazy" decoding="async" alt="CFD surface pressure coefficient on ZAFIRO I at 8 degrees angle of attack"></div><p class="cap">Surface pressure at 8 degrees. The fins carry the load that moves the center of pressure aft.</p></div>
+      </div>
+      <p class="sub-h">Build</p>
+      <div class="p-gallery three">
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Printing the fin can parts. Photo coming.</p></div>
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Fins in the alignment jig. Photo coming.</p></div>
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Paint and finish. Photo coming.</p></div>
+      </div>
+      <div class="p-gallery">
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">The finished rocket. Photo coming.</p></div>
+        <div><div class="photo tall" role="img" aria-label="Photo placeholder"></div><p class="cap">AV bay, assembled. Photo coming.</p></div>
+      </div>
+      <p class="sub-h">Flight</p>
+      <div class="p-gallery three">
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">On the pad. Photo coming.</p></div>
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Liftoff. Photo coming.</p></div>
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Recovery and the flight data. Photo coming.</p></div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-head">
+        <div>
+          <h2>Draco Recovery</h2>
+          <p class="when">NASA Student Launch · 2025 to now</p>
+        </div>
+        <p class="one">Two parachutes, two altimeters, four flights, and every one of them came back in one piece.</p>
+      </div>
+      <div class="photo wide" role="img" aria-label="Photo placeholder"></div>
+      <p class="cap">The avionics bay, fully assembled. Photo coming.</p>
+      <div class="p-body">
+        <div class="p-text">
+          <p>Draco is an 80 person team that competes in NASA's Student Launch each year. Recovery is the subsystem that decides whether a flight ends with a rocket you can fly again or a search through the brush. I joined it in August 2025 and now co-lead it with a team of eight.</p>
+          <p>The part I own is the avionics sled. The bay is a 12 inch fiberglass coupler with 4.8 inches of inside diameter, and into that go two altimeters, their batteries, the arming switches, and the wiring for the ejection charges. I designed the sled around that constraint: every component has its own place, nothing shares a volume with anything else, and you can still reach the switches and swap a battery on the pad without taking the bay apart.</p>
+          <p>I also ran the parachute drag studies that set our descent rate, trading the energy at touchdown against how far the wind would carry the rocket. In 2026 the team placed 11th of 32.</p>
+        </div>
+        <div class="facts">
+          <div><span>Airframe</span><b>5 inch, about 40 lb</b></div>
+          <div><span>Avionics bay</span><b>12 inch G12 coupler, 4.8 inch inside diameter</b></div>
+          <div><span>Altimeters</span><b>Featherweight Blue Raven, Missile Works RRC3+ backup</b></div>
+          <div><span>Deployment</span><b>Black powder, two e-matches per charge</b></div>
+          <div><span>Tracking</span><b>Featherweight GPS in its own shielded bay</b></div>
+          <div><span>Record</span><b>4 flights, 4 recoveries, full data each time</b></div>
+        </div>
+      </div>
+      <div class="p-gallery">
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">The sled, out of the bay. Photo coming.</p></div>
+        <div><div class="photo tall" role="img" aria-label="Photo placeholder"></div><p class="cap">Under canopy. Photo coming.</p></div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-head">
+        <div>
+          <h2>Active cooling laptop stand</h2>
+          <p class="when">Personal project</p>
+        </div>
+        <p class="one">Modeled, simulated, printed, and wired. The full loop on a small problem.</p>
+      </div>
+      <div class="photo wide" role="img" aria-label="Photo placeholder"></div>
+      <p class="cap">The finished stand. Photo coming.</p>
+      <div class="p-body">
+        <div class="p-text">
+          <p>My laptop runs hot, so I built a stand that pulls air through it. It's a small project, but I used it to practice the whole process the way I'd want to do it on something big: model it in Fusion 360, check the design in ANSYS before printing anything, print the parts, and write the Arduino code that drives the fans.</p>
+        </div>
+        <div class="facts">
+          <div><span>CAD</span><b>Fusion 360</b></div>
+          <div><span>Analysis</span><b>ANSYS</b></div>
+          <div><span>Parts</span><b>3D printed</b></div>
+          <div><span>Control</span><b>Arduino</b></div>
+        </div>
+      </div>
+      <div class="p-gallery">
+        <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">CAD model. Photo coming.</p></div>
+        <div><div class="photo square" role="img" aria-label="Photo placeholder"></div><p class="cap">Simulation. Photo coming.</p></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="tools">
+    <h2>What I work with</h2>
+    <dl>
+      <div><dt>Design</dt><dd>SolidWorks, Fusion 360, OpenRocket</dd></div>
+      <div><dt>Analysis</dt><dd>ANSYS Mechanical, Fluent, HFSS, MATLAB, Python</dd></div>
+      <div><dt>Electronics</dt><dd>KiCad, ESP32 and Arduino firmware, soldering, PID control</dd></div>
+      <div><dt>Shop</dt><dd>CNC machining, fiberglass, 3D printing, oscilloscopes, vacuum chamber testing</dd></div>
+    </dl>
+  </section>
+
+  <section class="contact">
+    <h2>If you're working on rockets, I'd like to hear about it.</h2>
+    <div class="links">
+      <a href="mailto:diego.reveron@upr.edu">diego.reveron@upr.edu</a>
+      <a href="https://github.com/dreveron10" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+  <p class="foot">Diego Reverón Ortiz, 2026</p>
+</div>
+
+<script>
+(async () => {
+  const mv = document.getElementById("zafiro3d");
+  if (!mv) return;
+  const toBlobUrl = (bytes) => URL.createObjectURL(new Blob([bytes], {type: "model/gltf-binary"}));
+  try {
+    const r = await fetch("models/zafiro-i.glb");
+    const ct = r.headers.get("content-type") || "";
+    if (r.ok && !ct.includes("text/html")) { mv.src = toBlobUrl(await r.arrayBuffer()); return; }
+    throw new Error("glb not served");
+  } catch (e) {
+    const s = document.createElement("script");
+    s.src = "models/zafiro-i.glb.js";
+    s.onload = () => {
+      const bin = atob(window.ZAFIRO_GLB_B64 || "");
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      mv.src = toBlobUrl(bytes);
+    };
+    document.head.appendChild(s);
+  }
+})();
+</script>
+
+</body>
+</html>
