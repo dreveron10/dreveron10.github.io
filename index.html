@@ -13,7 +13,7 @@
 <meta property="og:title" content="Diego Reverón">
 <meta property="og:description" content="Mechanical engineering student at UPR Mayagüez. Rocket recovery systems, avionics, and things I build.">
 <meta property="og:url" content="https://dreveron10.github.io/">
-<meta property="og:image" content="https://dreveron10.github.io/images/og.png">
+<meta property="og:image" content="https://dreveron10.github.io/images/og-2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -85,7 +85,7 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
 .p-head .when{font-size:15px;color:var(--muted);margin-top:8px}
 .p-head .one{font-size:19px;max-width:40ch;justify-self:end}
 .p-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:clamp(28px,4vw,56px)}
-.p-text{max-width:56ch;display:grid;gap:18px}
+.p-text{max-width:56ch;display:grid;gap:18px;align-content:start}
 .p-text p{font-size:17px}
 .facts{align-self:start;display:grid;gap:12px;font-size:15px;max-width:38ch;justify-self:end;width:100%}
 .facts div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding-top:12px;border-top:1px solid var(--line)}
@@ -94,6 +94,23 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
 .p-gallery{display:grid;grid-template-columns:3fr 2fr;gap:20px;margin-top:clamp(28px,4vw,56px);align-items:start}
 .p-gallery.flip{grid-template-columns:2fr 3fr}
 .p-gallery.one{grid-template-columns:1fr}
+.chart-fig{margin:clamp(28px,4vw,56px) 0 0}
+.p-gallery .chart-fig{margin:0}
+.chart{width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{fill:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.chart .ttl{fill:var(--muted);font-size:12px}
+.chart .s1{fill:none;stroke:var(--fg);stroke-width:2;stroke-linejoin:round}
+.chart .s2{fill:none;stroke:var(--link);stroke-width:2;stroke-linejoin:round}
+.chart .d1{fill:var(--fg)} .chart .d2{fill:var(--link)}
+.chart .lab{fill:var(--fg);font-size:12px;font-variant-numeric:tabular-nums}
+.chart .lab2{fill:var(--link);font-size:12px}
+.chart .ev{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4}
+.chart .lim{stroke:var(--muted);stroke-width:1;stroke-dasharray:5 4}
+.chart .bar{fill:var(--fg)}
+.pending{display:none!important}
+.p-gallery.schem{max-width:980px;gap:clamp(28px,4vw,48px)}
 .p-gallery.pair{grid-template-columns:1fr 1fr}
 .p-gallery.pair+.cap{margin-top:14px}
 @media (max-width:760px){.p-gallery.pair{grid-template-columns:1fr}}
@@ -198,14 +215,14 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
         </div>
       </div>
     </div>
-    <div class="portrait">
+    <div class="portrait pending">
       <div class="photo tall" role="img" aria-label="Photo placeholder"></div>
       <p class="cap">Photo coming.</p>
     </div>
   </section>
 
   <section class="projects" id="projects">
-    <p class="label">Selected work</p>
+    <p class="label">Projects</p>
 
     <article class="project">
       <div class="p-head">
@@ -219,17 +236,17 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
       <p class="cap">ZAFIRO I in Fusion 360. 2.68 inch Blue Tube, navy with a silver nose.</p>
       <div class="p-body">
         <div class="p-text">
-          <p>ZAFIRO I is the rocket I'm flying for my Level 1 high power certification. Blue Tube airframe, 38 mm motor mount, an AeroTech I218R, 1,650 grams on the pad and about 3,100 feet of apogee. Recovery is single deploy: a Featherweight Blue Raven fires the charge at apogee and the motor's own ejection backs it up 14 seconds later. Almost everything that isn't the tube is printed PETG, from the fin can rings to the two-piece nose to the AV bulkhead with its charge well built in. The fins are 6 mm birch.</p>
+          <p>ZAFIRO I is the rocket I'm flying for my Level 1 high power certification. Blue Tube airframe, 38 mm motor mount, an AeroTech I218R, 1,650 grams on the pad and about 3,100 feet of apogee. Recovery is single deploy: a Featherweight Blue Raven fires the ejection charge at apogee; the motor's 14 s delay charge backs it up 2.4 s later (14 s after burnout). Almost everything that isn't the tube is printed PETG, from the fin can rings to the two-piece nose to the AV bulkhead with its charge well built in. The fins are 6 mm birch.</p>
           <p>Most of the design decisions were about parts count and about what I could prove. Two printed parts replace the plywood centering rings: an aft ring with glue grooves and a forward cap that doubles as the motor bulkhead and carries the aft eyebolt on a captive nylock. The nose is two halves bonded on a lip, with #8-32 nuts embedded during a print pause so the bay rods thread straight into it. Two nylon shear pins hold the nose at 1.9 times the ejection load, enough to stay closed under drag and let go when the charge fires.</p>
-          <p>I didn't want to trust one number. OpenRocket gives 2.05 calibers on the pad and 122 ft/s off a 6 foot rail. Six Fluent cases put the center of pressure 1.3 to 2.2 inches further aft than Barrowman, so the margin is better than it looks, but they also put drag at Cd 0.75 instead of 0.51, which would bring apogee down to about 2,640 feet. An Explicit Dynamics landing at 4.9 m/s, tail first, showed the leading fin root reaching 129 MPa on concrete, about twice what birch plywood takes, and 79 MPa on sand. The fin is softer than any hard ground, so the fix isn't a stiffer fin. It's landing on grass and laying good quarter inch fillets.</p>
+          <p>OpenRocket gives 2.05 calibers on the pad and 122 ft/s off a 6 foot rail. Six Fluent cases put the center of pressure 1.3 to 2.2 inches further aft than Barrowman, so the margin is better than it looks, but they also put drag at Cd 0.75 instead of 0.51, which would bring apogee down to about 2,640 feet. An Explicit Dynamics landing at 4.9 m/s, tail first, showed the leading fin root reaching 129 MPa on concrete, about twice what birch plywood takes, and 79 MPa on sand. A stiffer fin wouldn't help, because the fin is already softer than any hard ground. The plan is to land on grass and lay good quarter inch fillets.</p>
           <p>What I know I haven't proven yet: the forward cap and nose boss geometry wouldn't mesh, so those are hand calculations for now, 2.5x and 8x. A washer I modeled into the cap pocket turned out to be impossible to install, which I caught on October 30, so the nylock now bears directly on the plate and gets an epoxy bed and a 100 to 150 lbf pull test before the cap is glued. That pull test, a nose drop test and a ground test of the 1.0 gram charge all happen before it flies.</p>
         </div>
         <div class="facts">
           <div><span>Airframe</span><b>2.68 in Blue Tube, 38 mm mount</b></div>
           <div><span>Motor</span><b>AeroTech I218R-14A</b></div>
           <div><span>Pad mass</span><b>1,650 g</b></div>
-          <div><span>Apogee</span><b>3,130 ft in OpenRocket, about 2,640 ft with CFD drag</b></div>
-          <div><span>Stability</span><b>2.05 cal on the pad, 1.35 cal off the rail in 15 mph wind</b></div>
+          <div><span>Apogee</span><b>3,122 ft in OpenRocket (5 mph wind), about 2,640 ft with CFD drag</b></div>
+          <div><span>Stability</span><b>2.05 cal on the pad, 1.28 cal off the rail in 15 mph wind</b></div>
           <div><span>Recovery</span><b>Blue Raven at apogee, motor ejection backup, 15.8 ft/s under a 30 in chute</b></div>
           <div><span>Structure</span><b>Printed PETG fin can, nose and bulkhead, 6 mm birch fins</b></div>
           <div><span>Tools</span><b>Fusion 360, OpenRocket, Ansys Fluent, Explicit Dynamics, Static Structural</b></div>
@@ -256,18 +273,32 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
       <div class="p-gallery one">
         <div><div class="photo fit" style="aspect-ratio:1600/577"><picture><source srcset="images/zafiro-cfd-surface-cp-8deg.png" media="(prefers-color-scheme: dark)"><img src="images/zafiro-cfd-surface-cp-8deg-light.png" width="1600" height="577" loading="lazy" decoding="async" alt="CFD surface pressure coefficient on ZAFIRO I at 8 degrees angle of attack"></picture></div><p class="cap">Surface pressure at 8 degrees. The fins carry the load that moves the center of pressure aft.</p></div>
       </div>
-      <p class="sub-h">Build</p>
-      <div class="p-gallery three">
+      <p class="sub-h">Flight simulation</p>
+      <figure class="chart-fig">
+        <div class="chart" id="ch-ascent" role="img" aria-label="OpenRocket ascent: altitude peaks at 3,122 ft at 13.1 s, vertical speed peaks at 578 ft/s, acceleration peaks at 16.9 g"></div>
+        <p class="cap">OpenRocket, AeroTech I218R in 5 mph wind. Rail exit at 0.27 s and 122 ft/s, burnout at 1.5 s, apogee 3,122 ft at 13.1 s. Dashed lines mark burnout, apogee and the motor backup at 15.5 s.</p>
+      </figure>
+      <div class="p-gallery pair">
+        <figure class="chart-fig"><div class="chart" id="ch-wind-stab" role="img" aria-label="Rail exit stability falls from 2.12 cal in calm air to 1.10 cal at 20 mph wind"></div><p class="cap">Stability off the rail stays above 1 cal up to 20 mph.</p></figure>
+        <figure class="chart-fig"><div class="chart" id="ch-wind-drift" role="img" aria-label="Landing distance grows from 3 ft in calm air to 5,045 ft at 20 mph wind"></div><p class="cap">Drift under the 30 in chute is the real limit: 1,269 ft at 5 mph, 5,045 ft at 20 mph.</p></figure>
+      </div>
+      <p class="cap">Mean of 10 gust seeds per wind speed.</p>
+      <figure class="chart-fig">
+        <div class="chart" id="ch-orcfd" role="img" aria-label="Stability margin at Mach 0.3: OpenRocket 2.05 to 1.41 cal from 0 to 8 degrees, Fluent CFD 2.36 to 2.22 cal from 2 to 8 degrees"></div>
+        <p class="cap">Stability margin at Mach 0.3. Fluent puts the center of pressure 1.3 to 2.2 in further aft than Barrowman, so OpenRocket is the conservative design number.</p>
+      </figure>
+      <p class="sub-h pending">Build</p>
+      <div class="p-gallery three pending">
         <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Printing the fin can parts. Photo coming.</p></div>
         <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Fins in the alignment jig. Photo coming.</p></div>
         <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Paint and finish. Photo coming.</p></div>
       </div>
-      <div class="p-gallery">
+      <div class="p-gallery pending">
         <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">The finished rocket. Photo coming.</p></div>
         <div><div class="photo tall" role="img" aria-label="Photo placeholder"></div><p class="cap">AV bay, assembled. Photo coming.</p></div>
       </div>
-      <p class="sub-h">Flight</p>
-      <div class="p-gallery three">
+      <p class="sub-h pending">Flight</p>
+      <div class="p-gallery three pending">
         <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">On the pad. Photo coming.</p></div>
         <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Liftoff. Photo coming.</p></div>
         <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">Recovery and the flight data. Photo coming.</p></div>
@@ -278,30 +309,43 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
       <div class="p-head">
         <div>
           <h2>Draco Recovery</h2>
-          <p class="when">NASA Student Launch · 2025 to now</p>
+          <p class="when">NASA Student Launch · Recovery co-lead, 2026-27</p>
         </div>
-        <p class="one">Avionics sled and parachute drag studies. 4 flights, 4 recoveries. 11th of 32 in 2026.</p>
+        <p class="one">Dual-deploy recovery for the 2026-27 vehicle: two independent altimeters, black powder ejection, aluminum bulkheads checked by FEA.</p>
       </div>
-      <div class="photo wide" role="img" aria-label="Photo placeholder"></div>
-      <p class="cap">The avionics bay, fully assembled. Photo coming.</p>
+      <div class="photo fit" style="aspect-ratio:1400/1264;max-width:880px"><img src="images/draco-bay-faces.png" width="1400" height="1264" loading="lazy" decoding="async" alt="PDR render of the recovery bay sled from both faces, a Blue Raven 1 on one face and a Silicdyne Fluctus 2 on the other, between aluminum bulkheads with red eyebolts"></div>
+      <p class="cap">The recovery bay from both faces, as shown at PDR. Blue Raven 1 on one face, Fluctus 2 on the other, each with its own battery, arming switch and charges.</p>
       <div class="p-body">
         <div class="p-text">
-          <p>Draco is an 80 person team that competes in NASA's Student Launch each year. Recovery is the subsystem that decides whether a flight ends with a rocket you can fly again or a search through the brush. I joined it in August 2025 and now co-lead it with a team of eight.</p>
-          <p>The part I own is the avionics sled. The bay is a 12 inch fiberglass coupler with 4.8 inches of inside diameter, and into that go two altimeters, their batteries, the arming switches, and the wiring for the ejection charges. I designed the sled around that constraint: every component has its own place, nothing shares a volume with anything else, and you can still reach the switches and swap a battery on the pad without taking the bay apart.</p>
-          <p>I also ran the parachute drag studies that set our descent rate, trading the energy at touchdown against how far the wind would carry the rocket. In 2026 the team placed 11th of 32.</p>
+          <p>Draco is an 80 person team that competes in NASA's Student Launch each year. Recovery is the subsystem that brings the rocket back in a condition to fly again. I joined it in August 2025 and now co-lead it with a team of eight.</p>
+          <p>This season's vehicle is 80.7 inches long and flies to about 5,440 feet on an L1256WS. I worked out the main parachute's opening force with a finite-mass method, which gave 1,068 lbf, and set the design load at twice that. The shock cord, quick links and eyebolts all had to clear 2,136 lbf, and I checked the aluminum bulkheads against the same load with a plate FEA written in Python. The peak is 257 MPa at the eyebolt hole, under the 276 MPa yield of 6061-T6.</p>
+          <p>We also switched from CO2 to black powder, a first for the team, after scoring the options in a decision matrix. I sized the charges from re-measured compartment volumes at 15 psi. The two altimeters have their own batteries, their own side of the arming switch and their own charges, so one failure can't take out both. I modeled the black powder version of the bay in Fusion 360 and wrote the Recovery section of our PDR. Next is the subscale flight on December 11.</p>
+          <p>Last season I helped design the recovery system that flew four times and came back with full data every time, and I ran the parachute drag studies that set our descent rate. My recovery PCB revision flew on the 2026 competition flight, where the team placed 11th of 32.</p>
         </div>
         <div class="facts">
-          <div><span>Airframe</span><b>5 inch, about 40 lb</b></div>
-          <div><span>Avionics bay</span><b>12 inch G12 coupler, 4.8 inch inside diameter</b></div>
-          <div><span>Altimeters</span><b>Featherweight Blue Raven, Missile Works RRC3+ backup</b></div>
-          <div><span>Deployment</span><b>Black powder, two e-matches per charge</b></div>
-          <div><span>Tracking</span><b>Featherweight GPS in its own shielded bay</b></div>
-          <div><span>Record</span><b>4 flights, 4 recoveries, full data each time</b></div>
+          <div><span>Vehicle</span><b>80.7 in long, 5.54 in Blue Tube 2.0, AeroTech L1256WS, about 5,440 ft</b></div>
+          <div><span>Deployment</span><b>Drogue at apogee + 1 s, main at 600 ft AGL</b></div>
+          <div><span>Parachutes</span><b>15 in drogue, 96 in Iris Ultra Compact main, lands at about 15.6 ft/s</b></div>
+          <div><span>Recovery bay</span><b>11.77 in coupler, 5.385 in OD, 1 in switch band</b></div>
+          <div><span>Altimeters</span><b>Featherweight Blue Raven 1, Silicdyne Fluctus 2 backup with GPS</b></div>
+          <div><span>Ejection</span><b>4F black powder, sized at 15 psi; backups 25% larger, at apogee + 2 s and 550 ft</b></div>
+          <div><span>Opening load</span><b>1,068 lbf, 2,136 lbf design load</b></div>
+          <div><span>Bulkheads</span><b>0.375 in 6061-T6, 257 MPa peak vs 276 MPa yield at design load</b></div>
+          <div><span>Next</span><b>Subscale flight Dec 11, 2026; CDR Jan 7, 2027</b></div>
+          <div><span>2025-26</span><b>4 flights, 4 recoveries, 11th of 32</b></div>
         </div>
       </div>
-      <div class="p-gallery">
+      <div class="p-gallery pending">
         <div><div class="photo wide" role="img" aria-label="Photo placeholder"></div><p class="cap">The sled, out of the bay. Photo coming.</p></div>
         <div><div class="photo tall" role="img" aria-label="Photo placeholder"></div><p class="cap">Under canopy. Photo coming.</p></div>
+      </div>
+      <div class="p-gallery flip">
+        <div><div class="photo fit" style="aspect-ratio:700/1442;max-height:640px"><img src="images/draco-bay-iso.png" width="700" height="1442" loading="lazy" decoding="async" alt="Render of the assembled recovery bay from above, aluminum bulkhead with a forged eyebolt and threaded rods"></div><p class="cap">The assembled bay: two aluminum bulkheads on 1/4-20 threaded rods, a 1/2-13 forged eyebolt on each end.</p></div>
+        <div><div class="photo fit" style="aspect-ratio:1000/854"><picture><source srcset="images/draco-bulkhead-fea.png" media="(prefers-color-scheme: dark)"><img src="images/draco-bulkhead-fea-light.png" width="1000" height="854" loading="lazy" decoding="async" alt="Von Mises stress map of the aluminum bulkhead, highest at the central eyebolt hole"></picture></div><p class="cap">Bulkhead stress at the 2,136 lbf design load, solved in Python with the thickness map from the CAD. Peak 257 MPa at the eyebolt hole against 276 MPa yield; the rest of the plate stays under 125 MPa and deflects 0.009 in.</p></div>
+      </div>
+      <div class="p-gallery one schem">
+        <div><div class="photo fit" style="aspect-ratio:1400/528"><picture><source srcset="images/draco-schematic-blueraven.png" media="(prefers-color-scheme: dark)"><img src="images/draco-schematic-blueraven-light.png" width="1400" height="528" loading="lazy" decoding="async" alt="Wiring schematic of the Blue Raven 1 primary altimeter: 1S LiPo, pull-pin switch B, drogue and main primary e-matches"></picture></div><p class="cap">Primary: Blue Raven 1 on a 1S LiPo and switch side B, firing the primary drogue and main charges.</p></div>
+        <div><div class="photo fit" style="aspect-ratio:1400/449"><picture><source srcset="images/draco-schematic-fluctus.png" media="(prefers-color-scheme: dark)"><img src="images/draco-schematic-fluctus-light.png" width="1400" height="449" loading="lazy" decoding="async" alt="Wiring schematic of the Fluctus 2 backup altimeter: 2S LiPo, pull-pin switch A, drogue and main backup e-matches"></picture></div><p class="cap">Backup: Fluctus 2 on a 2S LiPo and switch side A, with its own drogue and main charges.</p></div>
       </div>
     </article>
 
@@ -313,11 +357,11 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
         </div>
         <p class="one">Fusion 360 model, Ansys Fluent CFD, 3D printed parts, XIAO ESP32-C3 fan control.</p>
       </div>
-      <div class="photo wide" role="img" aria-label="Photo placeholder"></div>
-      <p class="cap">The finished stand. Photo coming.</p>
+      <div class="photo wide pending" role="img" aria-label="Photo placeholder"></div>
+      <p class="cap pending">The finished stand. Photo coming.</p>
       <div class="p-body">
         <div class="p-text">
-          <p>My laptop runs hot, so I built a stand that pulls air through it. It's a small project, but I used it to practice the whole process the way I'd want to do it on something big: model it in Fusion 360, check the design in ANSYS before printing anything, print the parts, and write the Arduino code that drives the fans.</p>
+          <p>My laptop runs hot, so I built a stand that pulls air through it. I used it to practice the whole process: model it in Fusion 360, check the design in ANSYS before printing anything, print the parts, and write the Arduino code that drives the fans.</p>
         </div>
         <div class="facts">
           <div><span>CAD</span><b>Fusion 360</b></div>
@@ -359,7 +403,7 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
   </section>
 
   <section class="tools">
-    <h2>What I work with</h2>
+    <h2>Tools</h2>
     <dl>
       <div><dt>Design</dt><dd>SolidWorks, Fusion 360, OpenRocket</dd></div>
       <div><dt>Analysis</dt><dd>ANSYS Mechanical, Fluent, HFSS, MATLAB, Python</dd></div>
@@ -369,7 +413,7 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
   </section>
 
   <section class="contact">
-    <h2>If you're working on rockets, I'd like to hear about it.</h2>
+    <h2>Contact</h2>
     <div class="links">
       <a href="mailto:diego.reveron@upr.edu">diego.reveron@upr.edu</a>
       <a href="https://github.com/dreveron10" target="_blank" rel="noopener">GitHub</a>
@@ -399,6 +443,92 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
     };
     document.head.appendChild(s);
   }
+})();
+</script>
+
+<script>
+/* Flight simulation charts, drawn at the container's real width so the text stays readable. Data from OpenRocket (ZAFIRO_I_L1.ork). */
+(() => {
+  const NS = "http://www.w3.org/2000/svg";
+  const ASCENT = [[0.0,0.0,0.0,0.0],[0.02,0.0,1.4,5.24],[0.047,0.1,8.5,10.25],[0.067,0.4,16.0,13.1],[0.088,0.8,25.9,16.09],[0.108,1.4,36.3,16.24],[0.128,2.3,46.8,16.4],[0.158,3.9,62.7,16.6],[0.188,6.0,78.8,16.74],[0.218,8.6,95.1,16.85],[0.248,11.7,111.3,16.87],[0.268,14.1,122.2,16.89],[0.305,19.0,142.5,16.74],[0.327,22.2,154.0,16.65],[0.349,25.7,165.8,16.63],[0.372,29.6,177.9,16.61],[0.413,37.3,199.7,16.56],[0.448,44.8,218.6,16.52],[0.498,56.4,244.8,16.16],[0.525,63.2,258.8,16.03],[0.553,70.5,272.9,15.92],[0.576,77.1,284.9,15.83],[0.599,83.8,296.5,15.72],[0.63,93.1,311.9,15.56],[0.653,100.4,323.3,15.41],[0.687,111.8,340.2,15.18],[0.709,119.3,350.7,15.02],[0.731,127.1,361.2,14.86],[0.761,138.2,375.6,14.6],[0.792,150.0,389.9,14.28],[0.837,168.1,410.3,13.83],[0.861,178.0,420.7,13.6],[0.892,191.1,434.0,13.25],[0.925,206.0,448.1,12.84],[0.947,216.0,457.1,12.58],[0.974,228.4,467.9,12.26],[1.0,240.7,478.0,11.93],[1.033,256.7,490.4,11.47],[1.073,276.4,504.6,10.89],[1.096,288.0,512.4,10.52],[1.119,300.0,520.1,10.12],[1.145,313.6,528.3,9.6],[1.168,326.0,535.4,9.13],[1.191,338.4,542.0,8.66],[1.219,353.4,549.4,8.11],[1.254,373.2,558.2,7.22],[1.281,388.3,564.1,6.48],[1.308,403.4,569.2,5.37],[1.332,417.2,572.9,4.15],[1.353,429.2,575.4,3.11],[1.384,447.1,577.4,1.02],[1.408,460.9,577.6,0.58],[1.432,474.8,576.7,1.64],[1.464,493.0,574.4,2.8],[1.489,507.7,571.8,3.26],[1.512,520.9,569.4,3.39],[1.535,533.7,566.9,3.52],[1.568,552.5,563.2,3.48],[1.589,564.1,560.8,3.46],[1.616,579.0,557.9,3.43],[1.663,605.3,552.7,3.37],[1.706,628.8,548.1,3.33],[1.728,641.1,545.7,3.31],[1.762,659.5,542.2,3.27],[1.804,682.1,537.8,3.23],[1.831,696.5,535.0,3.2],[1.871,717.9,530.9,3.16],[1.901,734.1,527.8,3.14],[1.924,746.2,525.5,3.11],[1.959,764.2,522.0,3.08],[2.127,850.7,505.8,2.94],[2.327,950.0,487.4,2.78],[2.527,1045.7,470.0,2.64],[2.719,1134.6,454.0,2.52],[2.892,1211.6,440.4,2.42],[3.083,1294.6,425.8,2.32],[3.269,1372.2,412.3,2.23],[3.419,1433.3,401.7,2.16],[3.619,1512.2,388.1,2.07],[3.819,1588.5,375.0,2.0],[4.019,1662.3,362.4,1.93],[4.219,1733.5,350.2,1.86],[4.369,1785.4,341.4,1.81],[4.519,1836.0,332.8,1.77],[4.719,1901.4,321.5,1.72],[4.869,1949.0,313.4,1.68],[5.019,1995.4,305.4,1.65],[5.189,2046.8,296.5,1.6],[5.375,2100.9,287.0,1.57],[5.573,2156.9,277.2,1.52],[5.723,2197.9,269.9,1.49],[5.873,2237.9,262.8,1.47],[6.073,2289.5,253.5,1.43],[6.223,2327.0,246.6,1.41],[6.373,2363.5,239.9,1.38],[6.573,2410.6,231.0,1.36],[6.723,2444.7,224.6,1.33],[6.873,2477.9,218.2,1.31],[7.073,2520.7,209.8,1.3],[7.223,2551.7,203.6,1.27],[7.373,2581.8,197.5,1.26],[7.573,2620.5,189.5,1.24],[7.723,2648.5,183.5,1.22],[7.873,2675.6,177.7,1.2],[8.023,2701.8,171.9,1.19],[8.223,2735.4,164.2,1.18],[8.373,2759.6,158.6,1.16],[8.523,2783.0,153.0,1.15],[8.723,2812.8,145.7,1.14],[8.873,2834.3,140.2,1.13],[9.023,2854.9,134.8,1.12],[9.223,2881.1,127.6,1.1],[9.373,2899.9,122.3,1.09],[9.523,2917.8,117.0,1.09],[9.723,2940.5,110.1,1.08],[9.873,2956.7,104.9,1.07],[10.023,2972.0,99.7,1.06],[10.173,2986.6,94.6,1.06],[10.373,3004.8,87.9,1.05],[10.523,3017.6,82.8,1.04],[10.673,3029.7,77.8,1.04],[10.873,3044.6,71.1,1.03],[11.023,3054.9,66.2,1.03],[11.173,3064.4,61.2,1.02],[11.373,3076.0,54.7,1.02],[11.523,3083.8,49.8,1.01],[11.673,3090.9,44.9,1.01],[11.873,3099.3,38.4,1.01],[12.023,3104.7,33.6,1.0],[12.173,3109.3,28.7,1.0],[12.373,3114.4,22.3,1.0],[12.523,3117.4,17.5,0.99],[12.673,3119.7,12.7,0.98],[12.873,3121.6,6.4,0.98],[13.023,3122.2,1.7,0.97],[13.202,3122.0,-3.8,1.07],[13.415,3120.6,-8.9,0.71],[13.742,3116.8,-14.1,0.34],[14.042,3112.2,-16.4,0.13],[14.302,3108.0,-16.5,0.05],[14.56,3103.7,-16.5,0.04],[14.818,3099.4,-16.5,0.04],[15.076,3095.2,-16.5,0.01],[15.334,3090.9,-16.5,0.03],[15.534,3087.6,-16.5,0.04],[15.793,3083.3,-16.5,0.01],[16.05,3079.1,-16.5,0.0],[16.308,3074.8,-16.5,0.03]];
+  const el = (tag, attrs, parent, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
+  const fmt = v => v.toLocaleString("en-US");
+  function panel(svg, o) {
+    const {x0, y0, w, h, xmin, xmax, ymin, ymax, yticks, xticks, ylabel, xlabel} = o;
+    const X = v => x0 + (v - xmin) / (xmax - xmin) * w, Y = v => y0 + h - (v - ymin) / (ymax - ymin) * h;
+    for (const t of yticks) { el("line", {class:"grid", x1:x0, x2:x0+w, y1:Y(t), y2:Y(t)}, svg); el("text", {class:"axis", x:x0-8, y:Y(t)+4, "text-anchor":"end"}, svg, yticks.some(v => v % 1) ? t.toFixed(1) : fmt(t)); }
+    if (xticks) for (const t of xticks) el("text", {class:"axis", x:X(t), y:y0+h+18, "text-anchor":"middle"}, svg, fmt(t));
+    if (ylabel) el("text", {class:"ttl", x:x0, y:y0-8}, svg, ylabel);
+    if (xlabel) el("text", {class:"ttl", x:x0+w, y:y0+h+36, "text-anchor":"end"}, svg, xlabel);
+    return {X, Y};
+  }
+  const path = pts => pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join("");
+  function svgFor(id, H) { const host = document.getElementById(id); if (!host) return null; const W = Math.max(280, host.clientWidth); host.textContent = ""; return [el("svg", {viewBox:`0 0 ${W} ${H}`, width:W, height:H}, host), W]; }
+
+  function ascent() {
+    const narrow = (document.getElementById("ch-ascent")||{}).clientWidth < 560;
+    const ph = narrow ? 110 : 130, gap = 44, top = 22, H = top + 3*ph + 2*gap + 40;
+    const r = svgFor("ch-ascent", H); if (!r) return; const [svg, W] = r;
+    const x0 = 52, w = W - x0 - 12, xt = narrow ? [0,4,8,12,16] : [0,2,4,6,8,10,12,14,16];
+    const ev = [1.535, 13.073, 15.535];
+    const defs = [
+      {i:1, ymin:0, ymax:3500, yticks:[0,1000,2000,3000], ylabel:"altitude, ft", peak:"3,122 ft"},
+      {i:2, ymin:-60, ymax:650, yticks:[0,200,400,600], ylabel:"vertical speed, ft/s", peak:"578 ft/s, Mach 0.52"},
+      {i:3, ymin:0, ymax:19, yticks:[0,5,10,15], ylabel:"acceleration, g", peak:"16.9 g"}];
+    defs.forEach((d, k) => {
+      const y0 = top + k*(ph+gap);
+      const {X, Y} = panel(svg, {x0, y0, w, h:ph, xmin:0, xmax:16.5, ymin:d.ymin, ymax:d.ymax, yticks:d.yticks, xticks: k===2 ? xt : null, ylabel:d.ylabel, xlabel: k===2 ? "time, s" : null});
+      for (const t of ev) el("line", {class:"ev", x1:X(t), x2:X(t), y1:y0, y2:y0+ph}, svg);
+      el("path", {class:"s1", d:path(ASCENT.map(p => [X(p[0]), Y(Math.max(d.ymin, p[d.i]))]))}, svg);
+      const pk = ASCENT.reduce((a, b) => b[d.i] > a[d.i] ? b : a);
+      el("circle", {class:"d1", cx:X(pk[0]), cy:Y(pk[d.i]), r:3.5}, svg);
+      const right = X(pk[0]) < x0 + w*0.6;
+      el("text", {class:"lab", x:X(pk[0]) + (right ? 8 : -8), y:Y(pk[d.i]) + (k===0 ? 16 : -8), "text-anchor": right ? "start" : "end"}, svg, d.peak);
+    });
+  }
+
+  function windStab() {
+    const H = 230, r = svgFor("ch-wind-stab", H); if (!r) return; const [svg, W] = r;
+    const x0 = 40, w = W - x0 - 16, y0 = 24, h = H - y0 - 48;
+    const d = [[0,2.12],[5,1.78],[10,1.51],[15,1.28],[20,1.10]];
+    const {X, Y} = panel(svg, {x0, y0, w, h, xmin:0, xmax:20, ymin:0, ymax:2.5, yticks:[0,0.5,1,1.5,2,2.5], xticks:[0,5,10,15,20], ylabel:"stability off the rail, cal", xlabel:"average wind, mph"});
+    el("line", {class:"lim", x1:x0, x2:x0+w, y1:Y(1), y2:Y(1)}, svg);
+    el("text", {class:"axis", x:x0+8, y:Y(1)-6}, svg, "1 cal minimum");
+    el("path", {class:"s1", d:path(d.map(p => [X(p[0]), Y(p[1])]))}, svg);
+    d.forEach((p, i) => { el("circle", {class:"d1", cx:X(p[0]), cy:Y(p[1]), r:3.5}, svg); el("text", {class:"lab", x:X(p[0]) + (i===4 ? -6 : 6), y:Y(p[1]) - 8, "text-anchor": i===4 ? "end" : "start"}, svg, p[1].toFixed(2)); });
+  }
+
+  function windDrift() {
+    const H = 230, r = svgFor("ch-wind-drift", H); if (!r) return; const [svg, W] = r;
+    const x0 = 52, w = W - x0 - 8, y0 = 24, h = H - y0 - 48;
+    const d = [[0,3],[5,1269],[10,2538],[15,3800],[20,5045]];
+    const {Y} = panel(svg, {x0, y0, w, h, xmin:0, xmax:1, ymin:0, ymax:6000, yticks:[0,2000,4000,6000], ylabel:"landing distance from pad, ft", xlabel:"average wind, mph"});
+    const slot = w / d.length, bw = Math.min(46, slot * 0.6);
+    d.forEach(p => { const i = d.indexOf(p), cx = x0 + slot*(i+0.5);
+      el("rect", {class:"bar", x:cx-bw/2, y:Y(p[1]), width:bw, height:Math.max(1, Y(0)-Y(p[1]))}, svg);
+      el("text", {class:"lab", x:cx, y:Y(p[1])-6, "text-anchor":"middle"}, svg, fmt(p[1]));
+      el("text", {class:"axis", x:cx, y:y0+h+18, "text-anchor":"middle"}, svg, p[0]); });
+  }
+
+  function orCfd() {
+    const narrow = (document.getElementById("ch-orcfd")||{}).clientWidth < 560;
+    const H = narrow ? 220 : 250, r = svgFor("ch-orcfd", H); if (!r) return; const [svg, W] = r;
+    const x0 = 40, w = W - x0 - (narrow ? 84 : 110), y0 = 24, h = H - y0 - 48;
+    const orr = [[0,2.05],[2,1.87],[4,1.70],[8,1.41]], cfd = [[2,2.36],[4,2.32],[8,2.22]];
+    const {X, Y} = panel(svg, {x0, y0, w, h, xmin:0, xmax:8, ymin:1, ymax:2.5, yticks:[1,1.5,2,2.5], xticks:[0,2,4,6,8], ylabel:"stability margin, cal", xlabel:"angle of attack, deg (Mach 0.3)"});
+    el("path", {class:"s1", d:path(orr.map(p => [X(p[0]), Y(p[1])]))}, svg);
+    el("path", {class:"s2", d:path(cfd.map(p => [X(p[0]), Y(p[1])]))}, svg);
+    orr.forEach(p => el("circle", {class:"d1", cx:X(p[0]), cy:Y(p[1]), r:3.5}, svg));
+    cfd.forEach(p => el("circle", {class:"d2", cx:X(p[0]), cy:Y(p[1]), r:3.5}, svg));
+    el("text", {class:"lab", x:X(8)+10, y:Y(1.41)+4}, svg, "OpenRocket");
+    el("text", {class:"lab2", x:X(8)+10, y:Y(2.22)+4}, svg, "Fluent CFD");
+  }
+
+  const draw = () => { ascent(); windStab(); windDrift(); orCfd(); };
+  draw();
+  let lastW = 0, raf = 0;
+  new ResizeObserver(() => { const w = (document.getElementById("ch-ascent")||{}).clientWidth || 0; if (w === lastW) return; lastW = w; cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }).observe(document.getElementById("ch-ascent"));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
 })();
 </script>
 
