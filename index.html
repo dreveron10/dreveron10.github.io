@@ -110,6 +110,9 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
 .chart .lim{stroke:var(--muted);stroke-width:1;stroke-dasharray:5 4}
 .chart .bar{fill:var(--fg)}
 .pending{display:none!important}
+.intro:has(> .portrait.pending){grid-template-columns:minmax(0,1fr)}
+.intro:has(> .portrait.pending) .sub{max-width:64ch}
+.intro:has(> .portrait.pending) .sub p{font-size:clamp(19px,1.7vw,23px)}
 .p-gallery.schem{max-width:980px;gap:clamp(28px,4vw,48px)}
 .p-gallery.pair{grid-template-columns:1fr 1fr}
 .p-gallery.pair+.cap{margin-top:14px}
@@ -152,6 +155,27 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
   .intro{grid-template-columns:3fr 2fr}
 }
 
+
+/* polish: clear breaks between projects, quieter sub-parts */
+.project{padding-block:clamp(80px,11vw,200px) clamp(40px,5vw,80px);border-top:1px solid var(--fg);scroll-margin-top:64px}
+.project:first-of-type{border-top:0;padding-top:clamp(40px,5vw,72px)}
+.p-head h2{font-size:clamp(34px,5vw,64px);letter-spacing:-.035em}
+.p-head{margin-bottom:clamp(28px,3.5vw,48px)}
+.sub-h{border-bottom:0;padding-bottom:0;margin:clamp(64px,8vw,112px) 0 0;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.p-gallery,.p-gallery+.p-gallery,.chart-fig,.viewer{margin-top:clamp(32px,4vw,56px)}
+.p-gallery .chart-fig{margin-top:0}
+.cap{max-width:76ch}
+.viewer .cap{max-width:none}
+.p-gallery.pair+.cap{margin-top:14px}
+.p-index{list-style:none;margin:0;padding:0;display:grid}
+.p-index a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:clamp(19px,1.8vw,24px);letter-spacing:-.01em}
+.p-index a span+span{font-size:15px;color:var(--muted);letter-spacing:0;text-align:right}
+.p-index a:hover,.p-index a:hover span+span{color:var(--link)}
+.tools{border-top-color:var(--fg)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:baseline}
+.contact h2{font-size:clamp(24px,3vw,36px);max-width:none}
+.contact .links{margin-top:0}
+
 /* phones */
 @media (max-width:760px){
   .nav ul{gap:18px}
@@ -188,6 +212,14 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
   .p-gallery.three{grid-template-columns:1fr}
   .p-gallery.three .photo.wide{aspect-ratio:16/10}
 }
+@media (max-width:760px){
+  .project{padding-block:72px 40px}
+  .contact{grid-template-columns:1fr;gap:20px}
+  .p-index a{flex-direction:column;gap:2px;padding:14px 0}
+  .p-index a span+span{text-align:left;font-size:14px}
+  .photo.tall.fit{aspect-ratio:1}
+  .photo.fit.lim{max-height:56vh!important}
+}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -223,8 +255,13 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
 
   <section class="projects" id="projects">
     <p class="label">Projects</p>
+    <ul class="p-index">
+      <li><a href="#zafiro"><span>ZAFIRO I</span><span>Level 1 certification rocket</span></a></li>
+      <li><a href="#draco"><span>Draco Recovery</span><span>NASA Student Launch, recovery co-lead</span></a></li>
+      <li><a href="#stand"><span>Active cooling laptop stand</span><span>Personal project, CFD</span></a></li>
+    </ul>
 
-    <article class="project">
+    <article class="project" id="zafiro">
       <div class="p-head">
         <div>
           <h2>ZAFIRO I</h2>
@@ -238,7 +275,7 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
         <div class="p-text">
           <p>ZAFIRO I is the rocket I'm flying for my Level 1 high power certification. Blue Tube airframe, 38 mm motor mount, an AeroTech I218R, 1,650 grams on the pad and about 3,100 feet of apogee. Recovery is single deploy: a Featherweight Blue Raven fires the ejection charge at apogee; the motor's 14 s delay charge backs it up 2.4 s later (14 s after burnout). Almost everything that isn't the tube is printed PETG, from the fin can rings to the two-piece nose to the AV bulkhead with its charge well built in. The fins are 6 mm birch.</p>
           <p>Most of the design decisions were about parts count and about what I could prove. Two printed parts replace the plywood centering rings: an aft ring with glue grooves and a forward cap that doubles as the motor bulkhead and carries the aft eyebolt on a captive nylock. The nose is two halves bonded on a lip, with #8-32 nuts embedded during a print pause so the bay rods thread straight into it. Two nylon shear pins hold the nose at 1.9 times the ejection load, enough to stay closed under drag and let go when the charge fires.</p>
-          <p>OpenRocket gives 2.05 calibers on the pad and 122 ft/s off a 6 foot rail. Six Fluent cases put the center of pressure 1.3 to 2.2 inches further aft than Barrowman, so the margin is better than it looks, but they also put drag at Cd 0.75 instead of 0.51, which would bring apogee down to about 2,640 feet. An Explicit Dynamics landing at 4.9 m/s, tail first, showed the leading fin root reaching 129 MPa on concrete, about twice what birch plywood takes, and 79 MPa on sand. A stiffer fin wouldn't help, because the fin is already softer than any hard ground. The plan is to land on grass and lay good quarter inch fillets.</p>
+          <p>OpenRocket gives 2.05 calibers on the pad and 122 ft/s off a 6 foot rail. Six Fluent cases put the center of pressure 1.3 to 2.2 inches further aft than Barrowman, so the margin is better than it looks, but they also put drag at Cd 0.75 instead of 0.51, which would bring apogee down to about 2,640 feet. An Explicit Dynamics landing at 4.9 m/s, tail first, showed the leading fin root reaching 129 MPa on concrete, about twice what birch plywood takes, and 79 MPa on sand. Making the fin stiffer doesn't solve this, because on hard ground the fin is the softest part of the impact. The plan is to land on grass and lay good quarter inch fillets.</p>
           <p>What I know I haven't proven yet: the forward cap and nose boss geometry wouldn't mesh, so those are hand calculations for now, 2.5x and 8x. A washer I modeled into the cap pocket turned out to be impossible to install, which I caught on October 30, so the nylock now bears directly on the plate and gets an epoxy bed and a 100 to 150 lbf pull test before the cap is glued. That pull test, a nose drop test and a ground test of the 1.0 gram charge all happen before it flies.</p>
         </div>
         <div class="facts">
@@ -279,10 +316,9 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
         <p class="cap">OpenRocket, AeroTech I218R in 5 mph wind. Rail exit at 0.27 s and 122 ft/s, burnout at 1.5 s, apogee 3,122 ft at 13.1 s. Dashed lines mark burnout, apogee and the motor backup at 15.5 s.</p>
       </figure>
       <div class="p-gallery pair">
-        <figure class="chart-fig"><div class="chart" id="ch-wind-stab" role="img" aria-label="Rail exit stability falls from 2.12 cal in calm air to 1.10 cal at 20 mph wind"></div><p class="cap">Stability off the rail stays above 1 cal up to 20 mph.</p></figure>
-        <figure class="chart-fig"><div class="chart" id="ch-wind-drift" role="img" aria-label="Landing distance grows from 3 ft in calm air to 5,045 ft at 20 mph wind"></div><p class="cap">Drift under the 30 in chute is the real limit: 1,269 ft at 5 mph, 5,045 ft at 20 mph.</p></figure>
+        <figure class="chart-fig"><div class="chart" id="ch-wind-stab" role="img" aria-label="Rail exit stability falls from 2.12 cal in calm air to 1.10 cal at 20 mph wind"></div><p class="cap">Stability off the rail stays above 1 cal up to 20 mph. Mean of 10 gust seeds per wind speed.</p></figure>
+        <figure class="chart-fig"><div class="chart" id="ch-wind-drift" role="img" aria-label="Landing distance grows from 3 ft in calm air to 5,045 ft at 20 mph wind"></div><p class="cap">Drift under the 30 in chute sets the wind limit: 1,269 ft at 5 mph, 5,045 ft at 20 mph.</p></figure>
       </div>
-      <p class="cap">Mean of 10 gust seeds per wind speed.</p>
       <figure class="chart-fig">
         <div class="chart" id="ch-orcfd" role="img" aria-label="Stability margin at Mach 0.3: OpenRocket 2.05 to 1.41 cal from 0 to 8 degrees, Fluent CFD 2.36 to 2.22 cal from 2 to 8 degrees"></div>
         <p class="cap">Stability margin at Mach 0.3. Fluent puts the center of pressure 1.3 to 2.2 in further aft than Barrowman, so OpenRocket is the conservative design number.</p>
@@ -305,21 +341,21 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
       </div>
     </article>
 
-    <article class="project">
+    <article class="project" id="draco">
       <div class="p-head">
         <div>
           <h2>Draco Recovery</h2>
           <p class="when">NASA Student Launch · Recovery co-lead, 2026-27</p>
         </div>
-        <p class="one">Dual-deploy recovery for the 2026-27 vehicle: two independent altimeters, black powder ejection, aluminum bulkheads checked by FEA.</p>
+        <p class="one">Dual-deploy recovery for the 2026-27 vehicle, with independent primary and backup altimeters.</p>
       </div>
       <div class="photo fit" style="aspect-ratio:1400/1264;max-width:880px"><img src="images/draco-bay-faces.png" width="1400" height="1264" loading="lazy" decoding="async" alt="PDR render of the recovery bay sled from both faces, a Blue Raven 1 on one face and a Silicdyne Fluctus 2 on the other, between aluminum bulkheads with red eyebolts"></div>
-      <p class="cap">The recovery bay from both faces, as shown at PDR. Blue Raven 1 on one face, Fluctus 2 on the other, each with its own battery, arming switch and charges.</p>
+      <p class="cap">The recovery bay from both faces, as shown at PDR. Blue Raven 1 on one face, Fluctus 2 on the other, each with its own battery, its own side of the arming switch and its own charges.</p>
       <div class="p-body">
         <div class="p-text">
-          <p>Draco is an 80 person team that competes in NASA's Student Launch each year. Recovery is the subsystem that brings the rocket back in a condition to fly again. I joined it in August 2025 and now co-lead it with a team of eight.</p>
+          <p>Draco is an 80 person team that competes in NASA's Student Launch each year. I joined Recovery in August 2025 and now co-lead it with a team of eight.</p>
           <p>This season's vehicle is 80.7 inches long and flies to about 5,440 feet on an L1256WS. I worked out the main parachute's opening force with a finite-mass method, which gave 1,068 lbf, and set the design load at twice that. The shock cord, quick links and eyebolts all had to clear 2,136 lbf, and I checked the aluminum bulkheads against the same load with a plate FEA written in Python. The peak is 257 MPa at the eyebolt hole, under the 276 MPa yield of 6061-T6.</p>
-          <p>We also switched from CO2 to black powder, a first for the team, after scoring the options in a decision matrix. I sized the charges from re-measured compartment volumes at 15 psi. The two altimeters have their own batteries, their own side of the arming switch and their own charges, so one failure can't take out both. I modeled the black powder version of the bay in Fusion 360 and wrote the Recovery section of our PDR. Next is the subscale flight on December 11.</p>
+          <p>This season the team moved from CO2 to black powder after scoring the options in a decision matrix. I sized the charges from re-measured compartment volumes at 15 psi. The two altimeters have their own batteries, their own side of the arming switch and their own charges, so one failure can't take out both. I modeled the black powder version of the bay in Fusion 360 and wrote the Recovery section of our PDR.</p>
           <p>Last season I helped design the recovery system that flew four times and came back with full data every time, and I ran the parachute drag studies that set our descent rate. My recovery PCB revision flew on the 2026 competition flight, where the team placed 11th of 32.</p>
         </div>
         <div class="facts">
@@ -340,7 +376,7 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
         <div><div class="photo tall" role="img" aria-label="Photo placeholder"></div><p class="cap">Under canopy. Photo coming.</p></div>
       </div>
       <div class="p-gallery flip">
-        <div><div class="photo fit" style="aspect-ratio:700/1442;max-height:640px"><img src="images/draco-bay-iso.png" width="700" height="1442" loading="lazy" decoding="async" alt="Render of the assembled recovery bay from above, aluminum bulkhead with a forged eyebolt and threaded rods"></div><p class="cap">The assembled bay: two aluminum bulkheads on 1/4-20 threaded rods, a 1/2-13 forged eyebolt on each end.</p></div>
+        <div><div class="photo fit lim" style="aspect-ratio:700/1442;max-height:640px"><img src="images/draco-bay-iso.png" width="700" height="1442" loading="lazy" decoding="async" alt="Render of the assembled recovery bay from above, aluminum bulkhead with a forged eyebolt and threaded rods"></div><p class="cap">The assembled bay: two aluminum bulkheads on 1/4-20 threaded rods, a 1/2-13 forged eyebolt on each end.</p></div>
         <div><div class="photo fit" style="aspect-ratio:1000/854"><picture><source srcset="images/draco-bulkhead-fea.png" media="(prefers-color-scheme: dark)"><img src="images/draco-bulkhead-fea-light.png" width="1000" height="854" loading="lazy" decoding="async" alt="Von Mises stress map of the aluminum bulkhead, highest at the central eyebolt hole"></picture></div><p class="cap">Bulkhead stress at the 2,136 lbf design load, solved in Python with the thickness map from the CAD. Peak 257 MPa at the eyebolt hole against 276 MPa yield; the rest of the plate stays under 125 MPa and deflects 0.009 in.</p></div>
       </div>
       <div class="p-gallery one schem">
@@ -349,11 +385,11 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
       </div>
     </article>
 
-    <article class="project">
+    <article class="project" id="stand">
       <div class="p-head">
         <div>
           <h2>Active cooling laptop stand</h2>
-          <p class="when">Personal project</p>
+          <p class="when">Personal project · v1 built, v2 in design</p>
         </div>
         <p class="one">Fusion 360 model, Ansys Fluent CFD, 3D printed parts, XIAO ESP32-C3 fan control.</p>
       </div>
@@ -361,7 +397,7 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
       <p class="cap pending">The finished stand. Photo coming.</p>
       <div class="p-body">
         <div class="p-text">
-          <p>My laptop runs hot, so I built a stand that pulls air through it. I used it to practice the whole process: model it in Fusion 360, check the design in ANSYS before printing anything, print the parts, and write the Arduino code that drives the fans.</p>
+          <p>My laptop runs hot, so I built a stand that pushes air into its intake. I used it to practice the whole process: model it in Fusion 360, check the design in Ansys before printing anything, print the parts, and write the Arduino code that drives the fans.</p>
         </div>
         <div class="facts">
           <div><span>CAD</span><b>Fusion 360</b></div>
@@ -369,6 +405,7 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
           <div><span>Fans</span><b>2x Arctic P12 Pro PST, 120 mm</b></div>
           <div><span>Parts</span><b>3D printed</b></div>
           <div><span>Control</span><b>XIAO ESP32-C3, Arduino IDE</b></div>
+          <div><span>Status</span><b>v1 built and in use; v2 (shown here) modeled and simulated</b></div>
           <div><span>Result</span><b>+35% laptop airflow in CFD, 20 to 26.9 CFM</b></div>
         </div>
       </div>
@@ -406,7 +443,7 @@ model-viewer{display:block;width:100%;height:clamp(420px,70vh,680px);touch-actio
     <h2>Tools</h2>
     <dl>
       <div><dt>Design</dt><dd>SolidWorks, Fusion 360, OpenRocket</dd></div>
-      <div><dt>Analysis</dt><dd>ANSYS Mechanical, Fluent, HFSS, MATLAB, Python</dd></div>
+      <div><dt>Analysis</dt><dd>Ansys Mechanical, Fluent, HFSS, MATLAB, Python</dd></div>
       <div><dt>Electronics</dt><dd>KiCad, ESP32 and Arduino firmware, soldering, PID control</dd></div>
       <div><dt>Shop</dt><dd>CNC machining, fiberglass, 3D printing, oscilloscopes, vacuum chamber testing</dd></div>
     </dl>
